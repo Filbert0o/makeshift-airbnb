@@ -2,15 +2,30 @@
 <html>
   <head>
     <title>Makeshift Air</title>
-    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.2/css/foundation-float.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="home.css">
+
+    <script
+      type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIdilEOk_CsFuM5xULsgYsJoc-jnQhjmc&libraries=places,drawing,geometry">
+    </script>
   </head>
 
   <body>
-    <div id="app"></div>
+  <!-- /*<style>
+     /*#map {
+      height: 100px;
+      width: 100%;
+     }*/
+  </style>*/ -->
+
+    <div id="app" class='rows columns'></div>
+
 
     <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!-- <script>function initMap() { console.log('lib loaded') }</script> -->
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIdilEOk_CsFuM5xULsgYsJoc-jnQhjmc&libraries=places"></script> -->
+
     <script src="/app.js"></script>
     <script src="/bundle.js"></script>
   </body>

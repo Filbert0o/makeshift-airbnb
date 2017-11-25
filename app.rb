@@ -1,4 +1,5 @@
 require "sinatra"
+require "net/http"
 require "sinatra/reloader"
 require "sinatra/activerecord"
 require "sinatra/json"
@@ -15,6 +16,42 @@ set :views, File.dirname(__FILE__) + "/app/views"
 #   also_reload file
 # end
 
+get "/api/v1/googlemap" do
+  uri = URI("https://maps.googleapis.com/maps/api/js?key=AIzaSyDIdilEOk_CsFuM5xULsgYsJoc-jnQhjmc&callback=initMap")
+  return Net::HTTP.get(uri)
+end
+
+get "/api/v1/googlemap/places" do
+  uri = URI("https://maps.googleapis.com/maps/api/js?key=AIzaSyDIdilEOk_CsFuM5xULsgYsJoc-jnQhjmc&libraries=places")
+  return Net::HTTP.get(uri)
+end
+
+
+
 get '/' do
+  erb :home
+end
+
+get '/form' do
+  erb :home
+end
+
+get '/host' do
+  erb :home
+end
+
+get '/saved_places' do
+  erb :home
+end
+
+get '/trips' do
+  erb :home
+end
+
+get '/messages' do
+  erb :home
+end
+
+get '/help' do
   erb :home
 end
