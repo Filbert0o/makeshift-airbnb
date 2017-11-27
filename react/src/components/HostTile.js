@@ -4,7 +4,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 
 const HostTile = props =>{
   return(
-    <form className="new-article-form callout" onSubmit={props.handleFormSubmit}>
+    <form className="new-article-form callout" onSubmit={props.handleFormSubmit} method="post">
       <label>Name:
       <input
         name='name'

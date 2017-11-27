@@ -4,6 +4,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
 import PlacesForm from '../components/PlacesForm';
 import MapComponent from "../components/MapComponent"
+import WeatherComponent from "../components/WeatherComponent"
 
 
 class GooglePlaces extends Component {
@@ -90,6 +91,10 @@ class GooglePlaces extends Component {
       <div className="rows text-center">
 
         <div className="large-6 columns">
+          <WeatherComponent
+            lat={this.state.geocodeLat}
+            lng={this.state.geocodeLng}
+          />
           <PlacesForm
             //handleFormSubmit={this.handleFormSubmit}
             lat={this.state.geocodeLat}

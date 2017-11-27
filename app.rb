@@ -1,10 +1,12 @@
 require "sinatra"
 require "net/http"
+require 'active_record'
 require "sinatra/reloader"
 require "sinatra/activerecord"
 require "sinatra/json"
 require "json"
 require 'pry'
+
 
 set :bind, '0.0.0.0'
 
@@ -15,6 +17,11 @@ set :views, File.dirname(__FILE__) + "/app/views"
 #   require file
 #   also_reload file
 # end
+DARK_SKY_API_KEY = "7f1e494905f2e9dadb9002a84f2c8f18"
+get "/api/v1/forecast/:latitude,:longitude" do |latitude, longitude|
+  uri = URI("https://api.darksky.net/forecast/#{DARK_SKY_API_KEY}/#{latitude},#{longitude}")
+  return Net::HTTP.get(uri)
+end
 
 get "/api/v1/googlemap" do
   uri = URI("https://maps.googleapis.com/maps/api/js?key=AIzaSyDIdilEOk_CsFuM5xULsgYsJoc-jnQhjmc&callback=initMap")
@@ -28,6 +35,7 @@ end
 
 
 
+
 get '/' do
   erb :home
 end
@@ -37,6 +45,16 @@ get '/form' do
 end
 
 get '/host' do
+  erb :home
+end
+
+post '/host' do
+  @name = params["name"]
+  @email = params["email"]
+  @type = params["type"]
+  @address = params["address"]
+
+  new_host = Host.create(name: @name, email: @email, type: @type, address: @address)
   erb :home
 end
 
